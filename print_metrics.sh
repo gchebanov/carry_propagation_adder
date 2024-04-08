@@ -5,6 +5,10 @@ for i in build/* ; do
 	if ! [ -f "$p" ]; then
 		continue
 	fi
-	echo "${i:6}" "$(jq ".sc__metric__timing__fmax" "$p")"
+	echo -n "${i:6} |"
+	for metric in ".sc__metric__timing__fmax" ".sc__metric__design__core__area" ".sc__metric__design__instance__area" ".sc__metric__power__total" ".sc__metric__design__instance__count" ; do
+    echo -n "$(jq "$metric" "$p") |"
+  done
+  echo ""
 done
 

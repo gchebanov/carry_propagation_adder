@@ -17,10 +17,13 @@ def fix_parameter(file_path, line_number, initial, to):
 
 name_dict = {
     'hc': 'han_carlson',
+    'hc_1k': 'han_carlson',
+    'hc_2k': 'han_carlson',
     'bk': 'brent_kung',
     'ks': 'kogge_stone',
     'lf': 'lander_fischer',
     'internal': 'internal',
+    'rca': 'rca',
 }
 
 
