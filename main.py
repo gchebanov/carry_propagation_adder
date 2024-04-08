@@ -1,4 +1,5 @@
 import argparse
+from collections.abc import Iterable, ByteString
 
 
 # old python workaround
@@ -24,6 +25,7 @@ name_dict = {
     'lf': 'lander_fischer',
     'internal': 'internal',
     'rca': 'rca',
+    'cs': ['conditional_sum', 'internal'],
 }
 
 
@@ -37,7 +39,13 @@ def build(name, bits):
         chip.input(file_path)
         chip.set('option', 'entrypoint', f'rtl_{name}')
         if full_name := name_dict.get(name, None):
-            chip.input(f'{full_name}.v')
+            if isinstance(full_name, Iterable):
+                for e in full_name:
+                    chip.input(f'{e}.v')
+            elif isinstance(full_name, ByteString):
+                chip.input(f'{full_name}.v')
+            else:
+                raise ValueError(str(full_name))
         chip.clock(pin='clk', period=25)
         chip.load_target("asap7_demo")
         chip.set('option', 'relax', True)
