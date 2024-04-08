@@ -25,7 +25,7 @@ name_dict = {
     'lf': 'lander_fischer',
     'internal': 'internal',
     'rca': 'rca',
-    'cs': ['conditional_sum', 'internal'],
+    'cs': ['conditional_sum', 'internal', 'conditional_sum_combine'],
 }
 
 
