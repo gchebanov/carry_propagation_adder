@@ -10,7 +10,7 @@ module conditional_sum #(
 );
 
 generate
-    if (N >= K) begin
+    if (N > K) begin
         localparam HI = N / 2;
         localparam LO = N - HI;
         wire [HI-1: 0] hi0_a, hi0_b, hi0_y; wire hi0_cin, hi0_cout;

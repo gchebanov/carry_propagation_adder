@@ -26,6 +26,8 @@ name_dict = {
     'internal': 'internal',
     'rca': 'rca',
     'cs': ['conditional_sum', 'internal', 'conditional_sum_combine'],
+    'csp': ['conditional_sum_p', 'internal'],
+    'css': ['carry_select', 'internal'],
 }
 
 

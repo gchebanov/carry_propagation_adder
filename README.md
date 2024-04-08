@@ -9,7 +9,8 @@ List
 5. Koggle Stone (ks) ![kogge_stone.png](kogge_stone.png)
 6. Han Carlson (hc) (k=`$clog2($clog2(N))``) ![han_carlson.png](han_carlson.png)
 7. Han Carlson with fixed k=1 and k=2
-8. Conditional sum (cs) split by blocks with k=8 uses "internal" implementations for that blocks.
+8. Conditional sum (cs) split by blocks with k=8 uses "internal" implementations for that blocks. Straightforward implementation leads to $n sqrt(n)$ gate consumption.
+9. Conditional sum (csp). Same as previous, but generate linear gates size; ![conditional_sum.png](conditional_sum.png)
 
 Results
 =======
