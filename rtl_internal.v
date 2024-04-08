@@ -1,4 +1,4 @@
-module rtl_hc #(
+module rtl_internal #(
     parameter N = 64
 ) (
     input wire clk,
@@ -10,17 +10,15 @@ module rtl_hc #(
 reg [N-1: 0] a;
 reg [N-1: 0] b;
 
-wire [N-1: 0] g = {a & b, 1'b0};
-wire [N-2: 0] p = a | b;
-
 wire [N-1: 0] c;
+wire cout;
 
-han_carlson #(N-1, $clog2($clog2(N))) impl(g, p, c);
+internal #(N) impl(a, b, 0, c, cout);
 
 always @(posedge clk) begin
     a <= wa;
     b <= wb;
-    y <= c ^ a ^ b;
+    y <= c;
 end
 
 endmodule

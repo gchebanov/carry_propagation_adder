@@ -56,7 +56,6 @@ generate
             assign b[K+STEPS][j] = b[K][j];
         end
     end
-    initial $monitor("a[K+STEPS]=%033b b[K+STEPS]=%033b", a[K+STEPS], b[K+STEPS]);
     // Brent Kung many-in-one steps (backward)
     for (j = 0; j <= N; j = j + 1) begin
         localparam shift = (j+1) & ~j;

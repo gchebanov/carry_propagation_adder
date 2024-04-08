@@ -1,4 +1,4 @@
-module rtl_hc #(
+module rtl_lf #(
     parameter N = 64
 ) (
     input wire clk,
@@ -15,7 +15,7 @@ wire [N-2: 0] p = a | b;
 
 wire [N-1: 0] c;
 
-han_carlson #(N-1, $clog2($clog2(N))) impl(g, p, c);
+lander_fischer #(N-1) impl(g, p, c);
 
 always @(posedge clk) begin
     a <= wa;
