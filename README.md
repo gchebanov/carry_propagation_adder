@@ -5,14 +5,21 @@ List adders
 ===
 
 1. internal (int) (`assign {cout, y} = a + b + cin;`)
-2. ripple carry adder (rca) ![rca.png](rca.png)
-3. Brent Kung (bk) ![brent_kung.png](brent_kung.png)
-4. Lander Fischer (lf) ![ladner_fischer.png](ladner_fischer.png)
-5. Koggle Stone (ks) ![kogge_stone.png](kogge_stone.png)
-6. Han Carlson (hc) (k=`$clog2($clog2(N))``) ![han_carlson.png](han_carlson.png)
+2. ripple carry adder (rca) 
+3. Brent Kung (bk) 
+4. Lander Fischer (lf) 
+5. Koggle Stone (ks) 
+6. Han Carlson (hc) (k=`$clog2($clog2(N))``) 
 7. Han Carlson with fixed k=1 and k=2
 8. Conditional sum (cs) split by blocks with k=8 uses "internal" implementations for that blocks. Straightforward implementation leads to $n sqrt(n)$ gate consumption.
-9. Conditional sum (csp). Same as previous, but generate linear gates size; ![conditional_sum.png](conditional_sum.png)
+9. Conditional sum (csp). Same as previous, but generate linear gates size; 
+
+![rca](rca.png)
+![brent_kung](brent_kung.png)
+![ladner_fischer](ladner_fischer.png)
+![kogge_stone](kogge_stone.png)
+![han_carlson](han_carlson.png)
+![conditional_sum](conditional_sum.png)
 
 List counters
 ===
@@ -132,4 +139,5 @@ Citation
 ========
 Images from [1].
 
-[1] Turcanik, Michal. (2019). Speed Comparison of the Adders in FPGA. 8. 18-23. 
+1. Turcanik, Michal. (2019). Speed Comparison of the Adders in FPGA. 8. 18-23. 
+2. Tackdon, Carlson. (1987). Fast area-efficient VLSI adders. 49–56.
