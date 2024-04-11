@@ -28,7 +28,10 @@ Uses [siliconcompiler](https://www.siliconcompiler.com/) with PDK "asap7", inter
 [//]: # (| 512  | ks   | place         | SIGSEGV | 539.41 MHz       |)
 [//]: # (| 512  | bk   | place         | SIGSEGV | 184.71 MHz       |)
 [//]: # (| 512  | lf   | place         | SIGSEGV | 140.64 MHz       |)
- 
+
+
+Design example Koggle Stone with 512 bit:
+![ks512](rtl_ks512.png)
 
 Successful run sorted by fmax:
 
