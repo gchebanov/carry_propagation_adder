@@ -1,7 +1,9 @@
 Carry propagation adders hardware implementations
 =================================================
 
-List
+List adders
+===
+
 1. internal (int) (`assign {cout, y} = a + b + cin;`)
 2. ripple carry adder (rca) ![rca.png](rca.png)
 3. Brent Kung (bk) ![brent_kung.png](brent_kung.png)
@@ -11,8 +13,11 @@ List
 7. Han Carlson with fixed k=1 and k=2
 8. Conditional sum (cs) split by blocks with k=8 uses "internal" implementations for that blocks. Straightforward implementation leads to $n sqrt(n)$ gate consumption.
 9. Conditional sum (csp). Same as previous, but generate linear gates size; ![conditional_sum.png](conditional_sum.png)
-10. Simple implement counter with cin (cnt).
-11. Block (B=8) carry tick-ahead counter (cnt_p).
+
+List counters
+===
+1. Simple implement counter with cin (cnt).
+2. Block (B=8) carry tick-ahead counter (cnt_p).
 
 Results
 =======
@@ -33,6 +38,9 @@ Uses [siliconcompiler](https://www.siliconcompiler.com/) with PDK "asap7", inter
 Design example Koggle Stone with 512 bit:
 ![ks512](rtl_ks512.png)
 
+All designs:
+![all designs](all-in-one.png)
+
 Successful run sorted by fmax:
 
 | bits | name  | fmax (Hz)  | total area (um^2) | cell area (um^2) | total power (mw) | cells |
@@ -46,6 +54,7 @@ Successful run sorted by fmax:
 | 64   | cnt   | 1114020000 | 456.121           | 69.0655          | 7.20104e-06      | 560   |
 | 128  | cnt   | 624556000  | 930.86            | 139.108          | 1.4103e-05       | 1103  |
 
+Sorted by fmax grouped by bits:
 
 | bits | name    | fmax (Hz)  | total area (um^2) | cell area (um^2) | total power (mw) | cells |
 |------|---------|------------|-------------------|------------------|------------------|-------|
