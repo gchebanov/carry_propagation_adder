@@ -28,6 +28,8 @@ name_dict = {
     'cs': ['conditional_sum', 'internal', 'conditional_sum_combine'],
     'csp': ['conditional_sum_p', 'internal'],
     'css': ['carry_select', 'internal'],
+    'cnt': None,
+    'cnt_p': ['rtl_cnt'],
 }
 
 

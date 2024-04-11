@@ -11,6 +11,8 @@ List
 7. Han Carlson with fixed k=1 and k=2
 8. Conditional sum (cs) split by blocks with k=8 uses "internal" implementations for that blocks. Straightforward implementation leads to $n sqrt(n)$ gate consumption.
 9. Conditional sum (csp). Same as previous, but generate linear gates size; ![conditional_sum.png](conditional_sum.png)
+10. Simple implement counter with cin (cnt).
+11. Block (B=8) carry tick-ahead counter (cnt_p).
 
 Results
 =======
@@ -29,6 +31,18 @@ Uses [siliconcompiler](https://www.siliconcompiler.com/) with PDK "asap7", inter
  
 
 Successful run sorted by fmax:
+
+| bits | name  | fmax (Hz)  | total area (um^2) | cell area (um^2) | total power (mw) | cells |
+|------|-------|------------|-------------------|------------------|------------------|-------|
+| 16   | cnt_p | 1981050000 | 128.596           | 19.6684          | 2.16325e-06      | 204   |
+| 32   | cnt_p | 1946270000 | 253.765           | 38.9723          | 4.04793e-06      | 355   |
+| 16   | cnt   | 1752120000 | 116.64            | 18.3271          | 1.9596e-06       | 185   |
+| 64   | cnt_p | 1606240000 | 564.538           | 79.3735          | 8.86059e-06      | 697   |
+| 32   | cnt   | 1461380000 | 239.345           | 38.6807          | 3.67048e-06      | 330   |
+| 128  | cnt_p | 1296870000 | 1003.05           | 144.167          | 1.5641e-05       | 1229  |
+| 64   | cnt   | 1114020000 | 456.121           | 69.0655          | 7.20104e-06      | 560   |
+| 128  | cnt   | 624556000  | 930.86            | 139.108          | 1.4103e-05       | 1103  |
+
 
 | bits | name    | fmax (Hz)  | total area (um^2) | cell area (um^2) | total power (mw) | cells |
 |------|---------|------------|-------------------|------------------|------------------|-------|
