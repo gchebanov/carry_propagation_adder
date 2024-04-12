@@ -33,7 +33,7 @@ name_dict = {
 }
 
 
-def build(name, bits):
+def build(name, bits, use_fpga):
     assert name in name_dict
     import siliconcompiler
     chip = siliconcompiler.Chip(f'rtl_{name}{bits}')
@@ -43,15 +43,21 @@ def build(name, bits):
         chip.input(file_path)
         chip.set('option', 'entrypoint', f'rtl_{name}')
         if full_name := name_dict.get(name, None):
-            if isinstance(full_name, Iterable):
+            if isinstance(full_name, str):
+                chip.input(f'{full_name}.v')
+            elif isinstance(full_name, Iterable):
                 for e in full_name:
                     chip.input(f'{e}.v')
-            elif isinstance(full_name, ByteString):
-                chip.input(f'{full_name}.v')
             else:
                 raise ValueError(str(full_name))
         chip.clock(pin='clk', period=25)
-        chip.load_target("asap7_demo")
+
+        if use_fpga:
+            chip.set('fpga', 'partname', 'ice40up5k-sg48')
+            chip.load_target("fpgaflow_demo")
+        else:
+            chip.load_target("asap7_demo")
+
         chip.set('option', 'relax', True)
         chip.set('option', 'quiet', True)
         chip.run()
@@ -64,8 +70,9 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('name', default='internal', choices=name_dict.keys())
     p.add_argument('bits', default=64)
+    p.add_argument('-f', action="store_true", help="Use fpgaflow with ice40up5k-sg48")
     args = p.parse_args()
-    build(args.name, args.bits)
+    build(args.name, args.bits, args.f)
 
 
 if __name__ == '__main__':
