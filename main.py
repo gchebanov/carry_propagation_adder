@@ -33,7 +33,7 @@ name_dict = {
 }
 
 
-def build(name, bits, use_fpga):
+def build(name, bits, use_fpga, remote):
     assert name in name_dict
     import siliconcompiler
     chip = siliconcompiler.Chip(f'rtl_{name}{bits}')
@@ -60,6 +60,8 @@ def build(name, bits, use_fpga):
 
         chip.set('option', 'relax', True)
         chip.set('option', 'quiet', True)
+        if remote:
+            chip.set('option', 'remote', remote)
         chip.run()
         chip.summary()
     finally:
@@ -71,8 +73,9 @@ def main():
     p.add_argument('name', default='internal', choices=name_dict.keys())
     p.add_argument('bits', default=64)
     p.add_argument('-f', action="store_true", help="Use fpgaflow with ice40up5k-sg48")
+    p.add_argument('-r', action="store_true", help="remote build")
     args = p.parse_args()
-    build(args.name, args.bits, args.f)
+    build(args.name, args.bits, args.f, args.r)
 
 
 if __name__ == '__main__':
