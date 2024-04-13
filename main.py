@@ -32,6 +32,7 @@ name_dict = {
     'cnt_p': ['rtl_cnt'],
     'cnt_l': None,
     'cnt_lp': None,
+    'cnt_bk': ['brent_kung'],
 }
 
 

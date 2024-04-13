@@ -7,7 +7,7 @@ module brent_kung #(
     parameter N = 2
 ) (
     input wire [N: 0] g,
-    input wire [N: 0] p,
+    input wire [N: 1] p,
     output wire [N: 0] c
 );
 

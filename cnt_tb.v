@@ -15,7 +15,8 @@ reg cout, i_cout;
 rtl_cnt #(N) internal (clk, nreset, cin, cnt, cout);
 //rtl_cnt_p #(N) rtl (clk, nreset, cin, i_cnt, i_cout);
 //rtl_cnt_l #(N) rtl (clk, nreset, cin, i_cnt, i_cout);
-rtl_cnt_lp #(N) rtl (clk, nreset, cin, i_cnt, i_cout);
+//rtl_cnt_lp #(N) rtl (clk, nreset, cin, i_cnt, i_cout);
+rtl_cnt_bk #(N) rtl (clk, nreset, cin, i_cnt, i_cout);
 
 initial begin
     nreset <= 0;

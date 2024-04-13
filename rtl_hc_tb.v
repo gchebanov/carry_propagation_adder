@@ -11,21 +11,22 @@ reg [N-1:0] a;
 reg [N-1:0] b;
 wire [N-1:0] y;
 
-rtl_hc rtl (clk, a, b, y);
+//rtl_hc rtl (clk, a, b, y);
+rtl_bk rtl (clk, a, b, y);
 
 initial begin
     a <= 64'h17705351ef640b95;
     b <= 64'h4d4efe8b5d14f84f;
     #10;
-    $display("a=0x%0h b=0x%0h y=0x%0h", a, b, y);
+    $display("a=0x%0h b=0x%0h y=0x%0h ans=0x%0h", a, b, y, a + b);
     a <= '0;
     b <= '0;
     #10;
-    $display("a=0x%0h b=0x%0h y=0x%0h", a, b, y);
+    $display("a=0x%0h b=0x%0h y=0x%0h ans=0x%0h", a, b, y, a + b);
     a <= '1;
     b <= '1;
     #10;
-    $display("a=0x%0h b=0x%0h y=0x%0h", a, b, y);
+    $display("a=0x%0h b=0x%0h y=0x%0h ans=0x%0h", a, b, y, a + b);
     $finish;
 end
 
