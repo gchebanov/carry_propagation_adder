@@ -30,6 +30,8 @@ name_dict = {
     'css': ['carry_select', 'internal'],
     'cnt': None,
     'cnt_p': ['rtl_cnt'],
+    'cnt_l': None,
+    'cnt_lp': None,
 }
 
 
