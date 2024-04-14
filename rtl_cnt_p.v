@@ -1,3 +1,5 @@
+// Author: Georgy Chenanov (gchebanov@gmail.com)
+
 module rtl_cnt_p #(
     parameter N = 64
 ) (
