@@ -24,9 +24,9 @@ List adders
 List counters
 ===
 1. Simple implement counter with cin (cnt). `n` depth.
-2. Block (B=8) carry tick-ahead counter (cnt_p). `sqrt(n)` depth.
-3. Lazy (1 bit per tick) high counter (cnt_l). `2log(n)` depth.
-4. Lazy high counter with pipelined low carry. `log(n)` depth.
+2. Block (B=8) carry tick-ahead counter (cnt_p). `sqrt(n)` depth. My own idea.
+3. Lazy (1 bit per tick) high counter (cnt_l). `2log(n)` depth. My own idea.
+4. Lazy high counter with pipelined low carry. `log(n)` depth. My own idea.
 5. Use summator Brent Kung (bk).
 
 Results
@@ -149,6 +149,26 @@ That is submodules count in `rca32` implementation (`build/rtl_rca32/job0/export
 | 1     | CKINVDCx9p33_ASAP7_75t_R |
 
 Total 513 (without both "Fillers" types).
+
+VLSI
+====
+
+Try to use that technique to improve big design [risc-v 32bit core](https://github.com/YosysHQ/picorv32/)
+Replace two counters `reg [63:0] count_cycle, count_instr;` by
+```verilog
+        wire count_cycle_cout, count_instr_cout;
+        wire counter_cycle_cin=1;
+        wire counter_instr_cin;
+        rtl_cnt_lp #(64) counter_cycle (clk, resetn, counter_cycle_cin, count_cycle, count_cycle_cout);
+        rtl_cnt_lp #(64) counter_instr (clk, resetn, counter_instr_cin, count_instr, count_instr_cout);
+```
+Initially in setup.top-10 path's 5 between count_ regs.
+After improve none of them are.
+
+| name             | fmax (Hz)          | total area (um^2) | cell area (um^2) | total power (mw)     | cells         |
+|------------------|--------------------|-------------------|------------------|----------------------|---------------|
+| picorev32        | 532487000          | 13864.4           | 1588.74          | 0.00050851           | 14203         |
+| picorev32+cnt_lp | 623204000 (+17.0%) | 14462 (+4.3%)     | 1651.87 (+3.97%) | 0.000507378 (-0.22%) | 14795 (+4.1%) |
 
 Citation
 ========
