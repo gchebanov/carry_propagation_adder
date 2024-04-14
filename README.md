@@ -170,6 +170,13 @@ After improve none of them are.
 | picorev32        | 532487000          | 13864.4           | 1588.74          | 0.00050851           | 14203         |
 | picorev32+cnt_lp | 623204000 (+17.0%) | 14462 (+4.3%)     | 1651.87 (+3.97%) | 0.000507378 (-0.22%) | 14795 (+4.1%) |
 
+Same with fpga synthesis (`TWO_CYCLE_ALU=1`)
+
+| name          | flags  | clock period, ns | Freq, MHz | wns    | lut   | ff  |
+|---------------|--------|------------------|-----------|--------|-------|-----|
+| picorev32_axi | cnt_lp | 1.36             | 735       | 0.021  | 1103  | 801 |
+| picorev32_axi |        | 1.535            | 651       | 0.072  | 978   | 682 |
+
 Citation
 ========
 Images from [1].
